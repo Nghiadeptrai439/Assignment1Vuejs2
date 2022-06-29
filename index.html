@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/main.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <form  id="body" class="body">
+        <h1>Add New Facebook Pixel</h1>
+        
+        <div class="body_head">        
+            
+            <li @click="radios='true'" ><input class="body_head-select" id="auto" type="radio" value="true">Auto input pixel</li>
+            <li @click="radios='false'"><input class="body_head-select" id="manual" type="radio" value="false">Manual input pixel</li>
+          
+        </div>
+        <div v-if="radios==='true'" class="body_account">
+            <div class="body_account-person">
+                <img class="person" src="./img/per1.png">
+                <img class="fb" src="./img/fb.png">
+            </div>
+            <div class="body_account-title">
+                <label>Lotusprayer Store <br> <a style="color: #35B26F;"><svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.1953 0.46875L4.03125 6.63281L1.78125 4.35938C1.66406 4.26562 1.47656 4.26562 1.38281 4.35938L0.703125 5.03906C0.609375 5.13281 0.609375 5.32031 0.703125 5.4375L3.84375 8.55469C3.96094 8.67188 4.125 8.67188 4.24219 8.55469L11.2734 1.52344C11.3672 1.42969 11.3672 1.24219 11.2734 1.125L10.5938 0.46875C10.5 0.351562 10.3125 0.351562 10.1953 0.46875Z" fill="#35B26F"/>
+                    </svg>
+                     Connect</a></label>
+            </div>         
+            <button>Change Account</button>
+        </div>
+        <div v-if="radios==='true'" id ="body_select"class="body_left">
+            <div class="body_left-acc">
+                <label>Select Business Account<br></label>
+                <select @change="onChangeBusiness()" v-model="businessSelected" >
+                    <option>Select you business account</option>
+                    <option v-for="acc in accounts" :value="acc.id" >{{acc.id +'-'+ acc.name}}</option>
+                </select>
+            </div>
+            <div class="body_left-missingAcc" id = "messageErrAcc">
+                <img src="./img/err.png">
+                <div>    
+                    <p>Missing account</p>
+                    <span>You don’t have any Bussiness Account. 
+                    Please <a href="#">Create New Bussiness account</a> first.</span>
+                </div>
+            </div>
+            <div  class="body_left-pixel">
+                <label>Select Pixel<br></label>
+                <select disabled="disabled" id="pixel">
+                    <option v-for="item in pixelArrayCorrectParentId">{{item.id +'-'+ item.parentId + '-' + item.name}}</option>
+                </select>
+            </div>
+            <div class="body_left-missingPixel" id = "messageErrPixel">
+                <img src="./img/err.png">
+                <div>    
+                    <p>Missing pixel</p>
+                    <span>You don’t have any Facebook Pixels in this Business Account. 
+                    Change Business Account or <a href="#">Create New Facebook Pixel</a> first.</span>
+                </div>
+            </div>
+            
+        </div>
+        <div v-if="radios==='false'" class="body_right">
+            <div class="body_right-name">
+                <label>Name this pixel<br></label>
+                <input id="name" type="text" placeholder="Input your pixel name" v-model="user.name">
+            </div> 
+            <div id ="errName" class="body_right-nameerr">{{errors.name}}</div>
+
+            <div class="body_right-ID">
+                <label>Enter Facebook Pixel ID<br></label>
+                <input  id="id" type="text" placeholder="Input your pixel id" v-model="user.id">
+            </div>
+            <div id ="errID" class="body_right-nameerr">{{errors.id}}</div>
+        </div>
+        <div class="body_convert">
+            <div class="body_convert-target">
+                <label>Target<br></label>
+                <select>
+                    <option>Entire page</option>
+                </select>
+            </div>
+            <div class="body_convert-api">
+                <label>Conversion API</label>
+                <p>Facebook conversions API will help you collect accurate data
+                    and improve the performance of your Facebook ads in a post-iOS 
+                    14 update world. <a href="#">Learn more</a></p>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+                      
+            </div>
+        </div>
+        <div class="body_up">
+           <img src="./img/bell.png"> 
+           <p>Please <b>UPGRADE</b> your plan to use Conversion API</p>
+
+        </div>
+
+        <div class="body_footer">
+
+            <button @click.prevent="resetForm()"class="body_footer-cancel">Cancel</button>
+            <button @click.prevent="save()" type="submit" class="body_footer-save">Save</button>
+
+        </div>
+    </form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="./script/main.js"></script>
+
+</body>
+</html>
