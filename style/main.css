@@ -61,6 +61,10 @@ body {
   cursor: pointer;
 }
 
+.body_head li input[type="radio"] ::after {
+  border: 1px solid #5B86E5;
+}
+
 .body_account {
   margin-top: 20px;
   margin-left: 40px;

@@ -17,8 +17,8 @@
         
         <div class="body_head">        
             
-            <li @click="radios='true'" ><input class="body_head-select" id="auto" type="radio" value="true">Auto input pixel</li>
-            <li @click="radios='false'"><input class="body_head-select" id="manual" type="radio" value="false">Manual input pixel</li>
+            <li @click="radios='true'"><label><input class="body_head-select"  id="auto" checked type="radio" value="auto"  name="1">Auto input pixel</label></li>
+            <li @click="radios='false'"><label><input class="body_head-select" id="manual" type="radio" value="manual" name="1">Manual input pixel</label></li>
           
         </div>
         <div v-if="radios==='true'" class="body_account">
@@ -42,14 +42,14 @@
                     <option v-for="acc in accounts" :value="acc.id" >{{acc.id +'-'+ acc.name}}</option>
                 </select>
             </div>
-            <div class="body_left-missingAcc" id = "messageErrAcc">
+            <!-- <div class="body_left-missingAcc" id = "messageErrAcc">
                 <img src="./img/err.png">
                 <div>    
                     <p>Missing account</p>
                     <span>You don’t have any Bussiness Account. 
                     Please <a href="#">Create New Bussiness account</a> first.</span>
                 </div>
-            </div>
+            </div> -->
             <div  class="body_left-pixel">
                 <label>Select Pixel<br></label>
                 <select disabled="disabled" id="pixel">

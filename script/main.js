@@ -1,4 +1,4 @@
-
+var errmess= document.querySelector("#messageErrPixel").style.display = "none";
 
 var listBusinessAccount = [
   {
@@ -112,7 +112,7 @@ var vm = new Vue({
       let pixelSelect = document.querySelector("#pixel");
       // let buss = document.getElementById("#bussiness");
       if (this.businessSelected) {
-        document.querySelector("#messageErrAcc").style.display = "none";
+        //document.querySelector("#messageErrAcc").style.display = "none";
 
         this.pixelArrayCorrectParentId = [];
         pixelSelect.removeAttribute('disabled');
@@ -137,33 +137,31 @@ var vm = new Vue({
     resetForm: function () {
       document.querySelector("#body").reset();
       document.querySelector("#pixel").setAttribute('disabled', '');
-      document.querySelector("#messageErrPixel").style.display = "flex";
-      document.querySelector("#messageErrAcc").style.display = "flex";
-      document.querySelector("#errName").style.display = "none";
-      document.querySelector("#errID").style.display = "none";
+      document.querySelector("#messageErrPixel").style.display = "none";
+      //document.querySelector("#messageErrAcc").style.display = "flex";
+    
+      
+      
 
 
-      // const name = document.querySelector("#name");
-      // const id = document.querySelector("#id");
-
-      // if(name.length == 0){
-      //   document.querySelector("#errmess").style.display = "none";
-      // }
-      // if(id.length == 0){
-      //   document.querySelector("#errmess").style.display = "none";
-      // }
+      
 
     },
     validate: function () {
       this.errors = {
         name: '',
         id: '',
-      }
-      if (!this.user.name) {
+      }      
+      // let errName= document.querySelector("#errName").style.display = "none";
+
+      
+      if (!this.user.name ) {
         this.errors.name = 'Name is required!!!';
       }
       else if (!isNaN(this.user.name)) {
         this.errors.name = 'Name is tring!!!';
+        ;
+       
       };
       if (!this.user.id) {
         this.errors.id = 'ID is required!!!';

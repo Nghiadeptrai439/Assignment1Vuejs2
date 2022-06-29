@@ -6,8 +6,6 @@ body{
     font-family: 'Poppins', sans-serif;
     
 }
-  
-
 
 .body {
     max-width: 500px;
@@ -45,7 +43,7 @@ body{
     margin-right: 40px;
 
     gap: 20px;
-
+    
     li {
         padding-top: 8px;
         list-style: none;
@@ -57,14 +55,15 @@ body{
             border: 1px solid #5B86E5;
             cursor: pointer;
         }
-        // &:focus{
+       
+        input[type="radio"] ::after{
+            border: 1px solid #5B86E5;
             
-        // }
-        
+        }
 
 
     }
-
+    
 }
 // .active{
 //     border: 1px solid #5B86E5;
